@@ -1,0 +1,17 @@
+﻿@model GraduationProject.ViewModels.TalentAcquisitionViewModel
+@{
+    Layout = "";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+@foreach (var item in Model.TalentedAcquisition)
+{
+    if (item.TA_Avatar != null)
+    {
+        var imageBase64 = Convert.ToBase64String(item.TA_Avatar);
+        var imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+        <div class="kora">
+            <img class="img-responsive img-circle" style="border:5px solid #ffffff;" src="@imageSrc" width="100%" alt="Avatar">
+        </div>
+    }
+}

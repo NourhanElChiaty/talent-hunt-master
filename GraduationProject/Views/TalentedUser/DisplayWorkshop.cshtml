@@ -1,0 +1,74 @@
+﻿@model GraduationProject.ViewModels.WorkshopViewModel
+
+@{
+    Layout = "";
+}
+
+
+<!--start workshop view-->
+@foreach (var item in Model.Workshop)
+{
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+        <div class="tst">
+            <div class="well">
+
+                <div class="media-body ">
+
+                    <h3 class="media-heading col-lg-6">@item.workshop_Name</h3>
+                    
+                    <p class="dets">
+                        <div class="col-lg-12">
+                            <h4>location: @item.workshop_Location </h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Start date: @item.workshop_Date.Date.ToShortDateString().ToString()</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Number of sessions: @item.workshop_Sessions</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Fees: @item.workshop_Fees $</h4>
+                        </div>
+
+                    </p>
+
+
+                    <p class="comment more">@item.workshop_Description </p>
+
+
+                    <div class="panel-footer">
+                        <p class="">
+                            <a href="#">@item.Talented.Name</a> |
+                            <i class="glyphicon glyphicon-calendar">:</i>@item.DateTime |
+                            | <i class="glyphicon glyphicon-tags"></i>
+                            @{foreach (var postTag in Model.WorkshopTags)
+                                {
+
+
+                                    if (item.Id == postTag.Workshopid)                                    {
+                                        <a href="#"><span class="label label-info">@postTag.Tags.Name</span></a>
+
+                                    }
+                                }
+                            }
+
+                            <a href="#"><button class="btn btn-default" onclick="location.href='@Url.Action("WorkshopForm", "TalentedUser")';">Join</button></a>
+                            <a href="#" onclick="location.href='@Url.Action("EditWorkshop", "TalentedUser",new { id =item.Id})';">Edit</a>
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+}

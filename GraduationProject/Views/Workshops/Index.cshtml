@@ -1,0 +1,61 @@
+﻿@model GraduationProject.ViewModels.AdminViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            UserName
+        </th>
+        <th>
+            WorkshopName
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Fees
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Sessions
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Workshops) { 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Talented.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workshop_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workshop_Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workshop_Fees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workshop_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workshop_Sessions)
+        </td>
+       
+        <td>
+           
+            @Html.ActionLink("Delete", "Delet", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

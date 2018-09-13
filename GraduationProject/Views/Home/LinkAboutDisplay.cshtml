@@ -1,0 +1,98 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+
+
+
+
+<!-- start about me section -->
+
+@foreach (var item in Model.TalentedUser)
+{
+    <div class="container col-lg-12">
+
+
+
+        <div class="col-lg-12">
+
+            <p>
+                <span class="s"> FirstName: </span>
+                < @item.TU_FirstName
+
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s"> LastName : </span>
+                @item.TU_LastName
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  Email : </span>
+                @item.TU_Email
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  Date Of Birth: </span>
+                @item.TU_DOB.ToString()
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s"> School : </span>
+                @item.TU_School
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  Degree : </span>
+                @item.TU_Degree
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s"> Language : </span>
+                @item.TU_Language
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s"> ProfiencyLevel : </span>
+                @item.TU_ProfiencyLevel
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  Gender : </span>
+                @item.TU_Gender
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  Nationality : </span>
+                @item.TU_Nationality
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s">  SelfDescription : </span>
+
+                @item.TU_SelfDescription
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
+                <span class="s"> Skills : </span>
+                @item.TU_Skills
+            </p>
+        </div>
+
+
+
+
+        <div class="clearfix"></div>
+    </div>
+}
+
+
+

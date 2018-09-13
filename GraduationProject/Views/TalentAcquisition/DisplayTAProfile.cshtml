@@ -1,0 +1,77 @@
+﻿@model GraduationProject.ViewModels.TalentAcquisitionViewModel
+
+@{ 
+    Layout = "";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+
+<!-- start about me section -->
+
+@foreach (var item in Model.TalentedAcquisition)
+{
+    <div class="container col-lg-12 under_space">
+
+
+
+        <div class="col-lg-12">
+
+            <p class="display_data">
+                <span class="s"> FirstName: </span>
+                @item.TA_FirstName
+
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s"> LastName : </span>
+                @item.TA_LastName
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s">  Email : </span>
+                @item.TA_Email
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s"> Nationality: </span>
+                @item.TA_Nationality
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s"> Company : </span>
+                @item.TA_Company
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s">  Company Description: </span>
+                @item.TA_CompanyDescription
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s"> What I Am Searching For : </span>
+                @item.TA_Searching
+            </p>
+        </div>
+        
+        
+
+        <button class="btn btn-default col-xs-offset-11" onclick="location.href='@Url.Action("EditProfile", "TalentAcquisition")'">Edit</button>
+
+
+        <div class="clearfix"></div>
+    </div>
+}
+
+
+
+
+
+
+<div class="clearfix"></div>
+<!-- end about me section -->

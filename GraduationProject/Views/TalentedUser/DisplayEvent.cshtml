@@ -1,0 +1,111 @@
+﻿@model GraduationProject.ViewModels.EventViewModel
+@{
+    Layout = "";
+}
+
+@foreach (var item in Model.Event)
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(e => e.Id);
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="tst">
+            <div class="well">
+
+
+                <div class="media-body ">
+                    <h3 class="media-heading col-lg-6">@item.Event_Name</h3>
+
+                    <p class="dets">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>location: @item.Event_Location </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Start date: @item.Event_Date.ToShortDateString().ToString()</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Open from: @item.Event_From.ToShortTimeString().ToString()</h4>
+                                <h4>To: @item.Event_To.ToShortTimeString().ToString()</h4>
+                            </div>
+                        </div>
+                    </p>
+
+
+                    <p class="comment more">@item.Event_Description</p>
+                </div>
+
+                <div class="panel-footer">
+                    <p class="">
+
+
+                        <a href="#">@item.Talented.Name </a>
+                        | <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime|
+                        
+                        <i class="glyphicon glyphicon-tags"></i>
+                        @foreach (var EventTag in Model.EventTags)
+                            {
+
+
+                                if (item.Id == EventTag.Eventid)
+                                {
+                                    <a href="#"><span class="label label-info">@EventTag.Tags.Name</span></a>
+
+                                }
+                            }
+                        
+
+                        <!--
+                          <a href="#"><button class="btn btn-default" onclick="location.href='Url.Action("WorkshopForm", "TalentedUser")';">Join</button></a>-->
+                        <a href="@Url.Action("EditEvent","TalentedUser",new { id = item.Id })">
+                            Edit
+                        </a>
+                       
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+@section scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                if(button.addClass("btn-default")){
+                    $.post("/api/attendances", { eventId: button.attr("data-event-id") })
+                    .done(function () {
+                        button.removeClass("btn-default").addClass("btn-info").text("Going");
+                    })
+                    .fail(function () {
+                        alert("something failed");
+                    });
+                } else{
+                    $.ajax({
+                        url:"/api/attendances/" + button.attr("data-event-id") ,
+                        method:"DELETE"
+                    })
+                    .done(function(){
+                        button.removeClass("btn-info").addClass("btn-default").text("Going?");
+
+                    })
+                    .fail(function(){
+                        alert("something failed");
+                    });
+                }
+            });
+        });
+    </script>
+
+}

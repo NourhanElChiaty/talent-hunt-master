@@ -1,0 +1,78 @@
+﻿
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<a href="#" class="scrollToTop"><span class="glyphicon glyphicon-chevron-up"></span></a>
+
+
+
+<div class="cont">
+    <nav class="navbar navbar-default col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="@Url.Action("Index", "Home")"><img src="~/images/logo1.png" height="64" width="64" class="img-responsive center-block animated wobble " alt="Logo" /></a>
+
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"></ul>
+                <form class="navbar-form navbar-left">
+
+
+                    <div class="form-group btnsearch">
+                        <b>Search by</b>
+                        <select class="SearchBy">
+                            <option value="Name">Username</option>
+                            <option value="Tags"> Tags</option>
+                        </select>
+                        @Html.TextBox("Search")
+                    </div>
+                    <button type="submit" id="searchbtn" value="Search" class="btn btn-default btn-search"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
+
+
+                <ul class="nav navbar-nav navbar-right">
+                    @Html.Partial("_LoginPartial")
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+</div>
+
+<div id="sidnav" class="">
+    <div id="mySidenav" class="sidenav">
+
+        <a href="@Url.Action("Index", "Home")" title="Home" data-toggle="tooltip" data-container="body" data-placement="right"><span class="glyphicon glyphicon-home"></span></a>
+
+
+        <a href="@Url.Action("Index", "Post")" data-toggle="tooltip" data-container="body" data-placement="right" title="Manage Post"><span class="glyphicon glyphicon-comment"></a>
+
+
+
+
+        <a href='@Url.Action("CreateEvent", "TalentedUser")' data-toggle="tooltip" data-container="body" data-placement="right" title="Manage Event"><span class="glyphicon glyphicon-bullhorn"></span></a>
+
+
+
+        <a href='@Url.Action("AddWorkshop", "TalentedUser")' data-toggle="tooltip" data-container="body" data-placement="right" title="Manage Workshop"><span class="glyphicon glyphicon-briefcase"></span></a>
+
+
+        <a href='@Url.Action("DisplayProfile", "TalentedUser")' title="Profile" data-toggle="tooltip" data-container="body" data-placement="right"><span class="glyphicon glyphicon-user"></span></a>
+
+        <a href='@Url.Action("AddFeedback", "TalentedUser")' data-toggle="tooltip" data-container="body" data-placement="right" title="Feedback"><span class="glyphicon glyphicon-send"></span></a>
+
+
+
+        <a href="#" id="aboutus" title="About Us" data-toggle="tooltip" data-container="body" data-placement="right"><span class="glyphicon glyphicon-globe"></a>
+    </div>
+</div>
+

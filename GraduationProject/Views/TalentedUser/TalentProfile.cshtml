@@ -1,0 +1,78 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+@{
+    ViewBag.Title = "TalentProfile";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+@Styles.Render("~/Content/layout_style.css")
+
+<div class="container col-lg-12 home">
+
+    <!-- start profile picture -->
+
+
+        <div class="avatar-upload">
+
+          @using (Html.BeginForm("AvatarUpload", "TalentedUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+          {
+
+
+            <div class="avatar-edit">
+                <input type="file" id="imageUpload" name="file" value="Browse" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload"></label>
+            </div>
+            @Html.Action("DispalyAvatar");
+
+            <input class="btn btn-default" type="submit" value="Upload" />
+
+          }
+
+
+
+
+
+        </div>
+
+        <!-- end profile picture -->
+
+
+
+
+    <!-- start manage post -->
+
+
+    <div class="col-lg-offset-1 col-lg-10">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#aboutme" aria-controls="aboutme" role="tab" data-toggle="tab">About me</a></li>
+            <li role="presentation"><a href="#exp" aria-controls="exp" role="tab" data-toggle="tab">Experience</a></li>
+
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- start about me section -->
+            <div role="tabpanel" class="tab-pane active" id="aboutme">
+                @Html.Partial("AboutMe")
+
+
+            </div>
+            <!-- end about me section -->
+            <!-- start exp. section -->
+            <div role="tabpanel" class="tab-pane" id="exp">
+                @Html.Partial("AddExperiences")
+            </div>
+            <!-- end exp. section -->
+
+
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+
+
+
+</div>

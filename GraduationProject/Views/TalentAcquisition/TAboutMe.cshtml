@@ -1,0 +1,57 @@
+﻿@model GraduationProject.ViewModels.TalentAcquisitionViewModel
+
+<div class="container col-lg-12">
+    
+        <div class="main__form col-lg-12 col-md-10 col-sm-9" id="signin__form">
+            @using (Html.BeginForm("TAboutMe", "TalentAcquisition", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label for="fname">First Name</label>
+                        @Html.TextBoxFor(m => m.TA_FirstName, new { @class = "form-control", @placeholder = "Your First Name" , @required="required", @maxlength = 15 })
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label for="lname">Last Name</label>
+                        @Html.TextBoxFor(m => m.TA_LastName, new { @class = "form-control", @placeholder = "Your Last Name", @required = "required", @maxlength = 15 })
+                    </div>
+               
+                                      
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label for="email">Email</label>
+                                                @Html.TextBoxFor(m => m.TA_Email, new { @class = "form-control", @placeholder = "Your Email" , @type ="mail", @required = "required" })
+                                            </div>
+
+
+
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label for="comment">City</label>
+                                                @Html.TextBoxFor(m => m.TA_Nationality, new { @class = "form-control", @placeholder = "Your City", @required = "required" })
+                                            </div>
+                                        
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label for="school">Company</label>
+                                                @Html.TextBoxFor(m => m.TA_Company, new { @class = "form-control", @placeholder = "Your Company", @required = "required" })
+                                            </div>
+
+                                          
+                                        
+                                            <div class="form-group col-md-6 col-sm-10">
+                                                <label for="comment">Company Description</label>
+                                                @Html.TextAreaFor(m => m.TA_CompanyDescription, new { id = "comment", @class = "form-control", @rows = 5, @maxlength = 500, @minlength = 10, @required = "required" })
+                                            </div>
+
+                                            <div class="form-group col-md-6 col-sm-10">
+                                                <label for="comment">What I am searching for</label>
+                                                @Html.TextAreaFor(m => m.TA_Searching, new { id = "comment", @class = "form-control", @rows = 5, @maxlength = 500, @minlength = 10, @required = "required" })
+                                            </div>
+                                       
+
+
+
+                                        <div class="clearfix"></div>
+                                        <button type="submit" class="btn btn-default col-lg-offset-5 col-lg-2 submit">Save</button>
+                                        <div class="clearfix"></div>
+            }
+        </div>
+ 
+</div>

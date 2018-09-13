@@ -1,0 +1,62 @@
+﻿@model GraduationProject.ViewModels.AdminViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="form-group">
+        
+    </div>
+</div>
+<br\>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>UserName</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Users)
+            {
+                <tr class="Search">
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>@item.UserName</td>
+                   
+                    <td> @Html.ActionLink("Delete", "Deetd",
+                        new { id = item.Id })</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1) {
+                    return true;
+                }
+            }
+                $("#Search").keyup(function () {
+                    var searchText = $("#Search").val().toLowerCase();
+                    $(".Search").each(function () {
+                        if (!Contains($(this).text().toLowerCase(), searchText))
+                        {
+                            $(this).hide();
+                        }
+                        else
+                        {
+                            $(this).show();
+                        }
+                    });
+                });
+            
+        });
+    </script>
+    

@@ -1,0 +1,44 @@
+﻿@model GraduationProject.ViewModels.AdminViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="container">
+    <div class="form-group">
+        <div class="input-group">
+            
+        </div>
+    </div>
+</div>
+<br\>
+
+    <table class="table table-striped">
+        @Html.ActionLink("Create", "Create")
+          <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Tags)
+            {
+                <tr class="Search">
+                    <td>@item.Name</td>
+
+
+                    <td>
+                        @Html.ActionLink("Edit","Edit", new { id = item.Id }) |
+
+                        @Html.ActionLink("Delete","Delete", new { id = item.Id })
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+   

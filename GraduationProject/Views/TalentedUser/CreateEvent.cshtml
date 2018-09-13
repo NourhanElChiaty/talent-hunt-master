@@ -1,0 +1,156 @@
+﻿@model GraduationProject.ViewModels.EventViewModel
+
+@{
+    ViewBag.Title = "CreateEvent";
+}
+
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+
+
+
+<div class="container col-lg-12">
+    <div class="main__form tst col-lg-12 col-md-10 col-sm-9">
+        @using (Html.BeginForm("CreateEvent", "TalentedUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(m => m.Id)
+
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="wname">Event Name</label>
+                @Html.TextBoxFor(m => m.Event_Name, new { @class = "form-control", @placeholder = "Event Name" })
+
+            </div>
+
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="input-date">Start Date</label>
+                @Html.TextBoxFor(m => m.Event_Date, new { id = "input-date", @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(m => m.Event_Date)
+                <span class="result"></span>
+            </div>
+
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="location">Location</label>
+                @Html.TextBoxFor(m => m.Event_Location, new { @class = "form-control", @placeholder = "Event Location" })
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="time">Open From</label>
+                @Html.TextBoxFor(m => m.Event_From, new { id = "input-time", @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(m => m.Event_From)
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="location">To</label>
+                @Html.TextBoxFor(m => m.Event_To, new { id = "input-time", @class = "form-control", type = "time" })
+                @Html.ValidationMessageFor(m => m.Event_To)
+
+
+            </div>
+
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="comment">Description</label>
+                @Html.TextAreaFor(m => m.Event_Description, new { id = "comment", @class = "form-control", @rows = 5 })
+            </div>
+
+            <div class="form-group col-lg-12">
+
+                @Html.LabelFor(m => m.SselectVal, "Tags ")
+
+
+                <input type="hidden" id="textBoxVal" />
+
+                <select class="mySelect2" multiple style="width :480px;" name="SselectVal" id="SselectVal" required></select>
+
+            </div>
+
+            <div class="clearfix"></div>
+            <button  type="submit" class="btn btn-default publishbtn   col-lg-offset-5 col-lg-1">Publish</button>
+            <div class="clearfix"></div>
+
+
+            <script>
+                $(document).ready(function () {
+                    $(".mySelect2").select2({
+                        placeholder: "",
+                        allClear: true,
+                        theme: "classic",
+                        ajax:
+                        {
+                            url: "/TalentedUser/GetTags",
+                            dataType: 'json',
+                            delay: 250,
+                            data: function (Params) {
+                                return {
+                                    SearchTerm: Params.term
+                                };
+                            },
+                            processResults: function (data, Params) {
+                                return {
+                                    results: data
+                                };
+                            }
+                        }
+                    });
+                });
+
+
+            </script>
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/select2.min.js"></script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@Html.Action("DisplayEvent");

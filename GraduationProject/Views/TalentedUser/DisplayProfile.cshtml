@@ -1,0 +1,141 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+
+@{
+    ViewBag.Title = "DisplayProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="container col-lg-12 up__space">
+
+    <!-- start profile picture -->  
+    <div class="avatar-upload">
+
+
+   @Html.Action("DispalyAvatar")
+
+                    
+
+
+
+    </div>
+
+
+
+    </div>
+
+    <!-- end profile picture -->
+
+    <h2 class="col-sm-offset-5 username">User Name</h2>
+    <br>
+    <br>
+    <br>
+
+    <!--start username-->
+    <!--start username-->
+    
+
+    <div class="col-lg-offset-1 col-lg-10">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#aboutme" aria-controls="aboutme" role="tab" data-toggle="tab">About me</a></li>
+            <li role="presentation"><a href="#exp" aria-controls="exp" role="tab" data-toggle="tab">Experience</a></li>
+            <li role="presentation"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Projects</a></li>
+           
+     
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content under_space">
+
+            <!-- start about me section -->
+            <div role="tabpanel" class="tab-pane active" id="aboutme">
+               @Html.Action("DisplayAboutMe")
+            </div>
+            <div class="clearfix"></div>
+            <!-- end about me section -->
+            <!-- start projects section -->
+            <div role="tabpanel" class="tab-pane" id="project">
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Posts</a></li>
+                        <li role="presentation"><a href="#workshop" aria-controls="messages" role="tab" data-toggle="tab">Workshops</a></li>
+                        <li role="presentation"><a href="#event" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+
+                        <!-- start photo section -->
+                        <div role="tabpanel" class="tab-pane active" id="photo">
+
+
+
+                            <div class="search__list">
+                                <table class="table table-hover">
+
+                                    <tbody>
+                                        <!-- post section-->
+                                      
+                                        @Html.Action("DisplayPost")
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <!-- end photo section -->
+                        
+                        <!-- start workshop section -->
+                        <div role="tabpanel" class="tab-pane" id="workshop">
+
+
+
+                            <!--start workshop view-->
+                            @Html.Action("DisplayWorkshop")
+                            <!--end workshop view-->
+
+
+                        </div>
+                        <!-- end workshop section -->
+                        <!-- start event section -->
+                        <div role="tabpanel" class="tab-pane" id="event">
+
+
+
+                            <!--start event view-->
+
+                            @Html.Action("DisplayEvent")
+                            <!--end event view-->
+
+                        </div>
+
+                        <!-- end event section -->
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- end projects section -->
+            <!-- start exp. section -->
+            <div role="tabpanel" class="tab-pane" id="exp">
+               @Html.Action("DisplayExperience")
+            </div>
+            <!-- end exp. section -->
+            
+
+         
+
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+
+
+
+
+</div>

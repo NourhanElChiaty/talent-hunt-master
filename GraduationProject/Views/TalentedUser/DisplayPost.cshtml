@@ -1,0 +1,46 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+@{
+    Layout = "";
+}
+
+@foreach (var item in Model.PostTable)
+{
+<tr class="col-sm-12">
+
+    @if (item.Imagepath != null)
+    {
+        var imageBase64 = Convert.ToBase64String(item.Imagepath);
+        var imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+        <td class="col-sm-4"><img class="col-sm-12" src="@imageSrc"></td>
+
+
+    }
+
+
+    <td class="col-sm-8">
+        <h4>@item.Title</h4>
+        <p>@item.Description</p>
+        <div class="panel-footer">
+            <p class="">
+
+                <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime
+                
+                |
+                <i class="glyphicon glyphicon-tags"></i>
+                @{foreach (var postTag in Model.postTags)
+                    {
+
+
+                        if (item.Id == postTag.postid)
+                        {
+                            <a href="#"><span class="label label-info">@postTag.Tags.Name</span></a>
+
+                        }
+                    }
+                }
+            </p>
+        </div>
+    </td>
+
+</tr>
+}

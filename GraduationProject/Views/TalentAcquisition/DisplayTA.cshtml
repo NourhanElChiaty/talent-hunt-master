@@ -1,0 +1,84 @@
+﻿@model GraduationProject.ViewModels.TalentAcquisitionViewModel
+
+@{
+    ViewBag.Title = "DisplayTA";
+}
+
+
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+
+
+
+<div class="container col-lg-12 up__space">
+
+    <!-- start profile picture -->
+    <div class="avatar-upload">
+
+
+        @Html.Action("DispalyAvatar")
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+<!-- end profile picture -->
+
+
+    
+   
+
+
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#aboutme" aria-controls="aboutme" role="tab" data-toggle="tab">About me</a></li>
+                <li role="presentation"><a href="#JA" aria-controls="JA" role="tab" data-toggle="tab">Job Application</a></li>
+                
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <!-- start about me section -->
+                <div role="tabpanel" class="tab-pane active" id="aboutme">
+
+                    @Html.Action("DisplayTAProfile")
+                </div>
+                <div class="clearfix"></div>
+                <!-- end about me section -->
+                <!-- start JA section -->
+                <div role="tabpanel" class="tab-pane" id="JA">
+                    <!-- start JA section -->
+
+
+                    <!--start JA view-->
+
+                    @Html.Action("DisplayJob")
+                </div>
+            
+            <!--end workshop view-->
+            <!-- end workshop section -->
+
+        </div>
+        <div class="clearfix"></div>
+        <!-- end JA section -->
+        
+    </div>
+    <div class="clearfix"></div>
+
+</div>
+
+</div>
+
+
+        </div>
+
+

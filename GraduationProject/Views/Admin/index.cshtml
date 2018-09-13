@@ -1,0 +1,106 @@
+﻿@model GraduationProject.ViewModels.AdminViewModel
+
+@{
+    ViewBag.Title = "index";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+
+
+<div class="col-lg-12 home">
+    <div class="home__container">
+        <!-- start profile picture -->
+        <div class="admin__info container col-sm-3">
+            <div class="profile-container">
+                <div class="kora">
+
+                    <image class="img-responsive img-circle" style="border:5px solid #ffffff;" id="profileImage" src="~/images/Admin.png" />
+
+                </div>
+                <div class="pic-overlay">
+                </div>
+            </div>
+
+
+
+            <h4> Name:Admin       </h4>
+
+
+
+            <h4>Mail:Admin74@outlook.com</h4>
+
+        </div>
+
+        <!-- end profile picture -->
+        <!-- start admin tabs -->
+        <div class="col-sm-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">Users</a></li>
+                <li role="presentation"><a href="#event" aria-controls="profile" role="tab" data-toggle="tab">Manage Events</a></li>
+                <li role="presentation"><a href="#workshop" aria-controls="workshop" role="tab" data-toggle="tab">Manage Workshops</a></li>
+                <li role="presentation"><a href="#JA" aria-controls="JA" role="tab" data-toggle="tab">Manage Posts</a></li>
+                <li role="presentation"><a href="#feedback" aria-controls="feedback" role="tab" data-toggle="tab">Manage Feedback</a></li>
+                <li role="presentation"><a href="#Tags" aria-controls="Tags" role="tab" data-toggle="tab">Tags</a></li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <!-- start users section -->
+                <div role="tabpanel" class="tab-pane active" id="user">
+                    <div class="main__form" id="">
+
+                        @Html.Partial("~/Views/ManageUsers/Index.cshtml")
+                    </div>
+                </div>
+                <!-- end users section -->
+                <!-- start events section -->
+                <div role="tabpanel" class="tab-pane" id="event">
+                    <div class="main__form" id="">
+                        @Html.Partial("~/Views/Events/Index.cshtml")
+
+                    </div>
+                </div>
+                <!-- end events section -->
+                <!-- start workshop section -->
+                <div role="tabpanel" class="tab-pane" id="workshop">
+                    <div class="main__form" id="">
+                        @Html.Partial("~/Views/Workshops/Index.cshtml")
+
+
+                    </div>
+                </div>
+                <!-- end workshop section -->
+                <!-- start job application section -->
+                <div role="tabpanel" class="tab-pane" id="JA">
+                    <div class="main__form" id="">
+                        @Html.Partial("~/Views/PostTables/Index.cshtml")
+
+
+                    </div>
+                </div>
+                <!-- end job application section -->
+                <!-- start feedback section -->
+                <div role="tabpanel" class="tab-pane" id="feedback">
+                    <div class="main__form" id="">
+                        @Html.Partial("~/Views/Feedbacks/Index.cshtml")
+                    </div>
+                </div>
+                <!-- end feedback section -->
+                <!-- start Tags section -->
+                <div role="tabpanel" class="tab-pane" id="Tags">
+                    <div class="main__form" id="">
+
+                        @Html.Partial("~/Views/Tags/index.cshtml")
+
+                    </div>
+                </div>
+                <!-- end Tags section -->
+            </div>
+        </div>
+        <!-- end admin tabs -->
+
+    </div>
+</div>
+

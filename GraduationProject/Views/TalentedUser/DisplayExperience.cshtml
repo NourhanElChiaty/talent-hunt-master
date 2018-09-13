@@ -1,0 +1,47 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+
+@{
+    Layout ="";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+@foreach (var item in Model.Experience)
+{
+    <div class="container col-lg-12">
+
+
+
+        <div class="col-lg-12">
+
+            <p class="display_data">
+                <span class="s"> Position: </span>
+                @item.Position
+
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s"> Company : </span>
+                @item.Company
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p class="display_data">
+                <span class="s">  Skills : </span>
+                @item.Skills
+            </p>
+        </div>
+       
+
+
+
+        <div class="clearfix"></div>
+    </div>
+}
+
+
+
+
+
+
+<div class="clearfix"></div>

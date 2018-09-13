@@ -1,0 +1,317 @@
+﻿@model GraduationProject.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+
+
+@foreach (var item in Model.Posts)
+{
+
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 " id="DataSearching">
+
+        <div class="tst">
+            <div class="well">
+
+                <div class="media col-md-12 col-sm-6 col-xs-6 ">
+
+                    <a href="#" class="thumbnail">
+
+
+
+
+                        @if (item.Imagepath != null)
+                        {
+                            var imageBase64 = Convert.ToBase64String(item.Imagepath);
+                            var imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                            <img data-toggle="modal" data-target="#imgview" alt="Image" src='@imageSrc'>
+
+
+                        }
+                    </a>
+
+                    <!--post view image pop up
+                    <div class="modal fade" id="imgview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg " role="document">
+                           <div class="modal-content">
+                                 <div class="modal-body">
+
+                                    <button type="button" class="close imgviewclose" data-dismiss="modal" aria-hidden="true">×</button>
+
+
+                                    <img src='imageSrc' alt="" class="img-responsive" style="width: 100%;">
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+
+                </div>
+
+                <div class="media-body  col-md-12 col-sm-6 col-xs-6 ">
+
+
+
+                    <h4 class="media-heading col-md-12">@item.Title</h4>
+
+                    @*<div>
+                            <span class="star glyphicon glyphicon-star-empty col-lg-6"></span>
+                        </div>*@
+
+
+                    <div class="row">
+
+                        <p class="comment more col-md-12">
+
+
+
+                            @item.Description
+
+                        </p>
+
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="panel-footer">
+                    <p class="">
+
+
+
+
+                        <a href="@Url.Action("LinkDisplay", "Home", new { id = @item.User.Id })">
+
+                            @item.User.Name
+                        </a>
+
+
+
+                        <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime
+
+
+                        <!--|<i class="glyphicon glyphicon-star">:</i>3 like button-->
+                        |
+                        <i class="glyphicon glyphicon-tags"></i>
+                        @{foreach (var postTag in Model.postTags)
+                            {
+
+
+                                if (item.Id == postTag.postid)
+                                {
+                                    <a href="#"><span class="label label-info">@postTag.Tags.Name</span></a>
+
+                                }
+                            }
+                        }
+
+
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+                            }
+
+@foreach (var item in Model.Event)
+{
+    @Html.AntiForgeryToken()
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="tst">
+            <div class="well">
+
+
+                <div class="media-body ">
+                    <h3 class="media-heading col-lg-6">@item.Event_Name</h3>
+
+                    <p class="dets">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>location: @item.Event_Location </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Start date: @item.Event_Date.ToShortDateString().ToString()</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Open from: @item.Event_From.ToShortTimeString().ToString()</h4>
+                                <h4>To: @item.Event_To.ToShortTimeString().ToString()</h4>
+                            </div>
+                        </div>
+                    </p>
+
+
+                    <p class="comment more">@item.Event_Description</p>
+                </div>
+
+                <div class="panel-footer">
+                    <p class="">
+
+
+                        <a href="#">@item.Talented.Name </a>
+                        | <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime|
+
+                        <i class="glyphicon glyphicon-tags"></i>
+                        @foreach (var EventTag in Model.EventUserTable)
+                        {
+
+
+                            if (item.Id == EventTag.Eventid)
+                            {
+                                <a href="#"><span class="label label-info">@EventTag.Tags.Name</span></a>
+
+                            }
+                        }
+
+
+
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+@foreach (var item in Model.Workshops)
+{
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+        <div class="tst">
+            <div class="well">
+
+                <div class="media-body ">
+
+                    <h3 class="media-heading col-lg-6">@item.workshop_Name</h3>
+
+                    <p class="dets">
+                        <div class="col-lg-12">
+                            <h4>location: @item.workshop_Location </h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Start date: @item.workshop_Date.Date.ToShortDateString().ToString()</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Number of sessions: @item.workshop_Sessions</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Fees: @item.workshop_Fees $</h4>
+                        </div>
+
+                    </p>
+
+
+                    <p class="comment more">@item.workshop_Description </p>
+
+
+                    <div class="panel-footer">
+                        <p class="">
+                            <a href="#">@item.Talented.Name</a> |
+                            <i class="glyphicon glyphicon-calendar">:</i>@item.DateTime |
+                            | <i class="glyphicon glyphicon-tags"></i>
+                            @{foreach (var postTag in Model.WorkshopUserTable)
+                                {
+
+
+                                    if (item.Id == postTag.Workshopid)
+                                    {
+                                        <a href="#"><span class="label label-info">@postTag.Tags.Name</span></a>
+
+                                    }
+                                }
+                            }
+
+                            <a href="#"><button class="btn btn-default" onclick="location.href='@Url.Action("WorkshopForm", "TalentedUser")';">Join</button></a>
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+                                }
+
+
+
+
+
+@foreach (var item in Model.JobApplicationPost)
+{
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+        <div class="tst">
+            <div class="well">
+
+                <div class="media-body ">
+
+                    <h4 class="media-heading col-lg-6">Job Title: @item.JobTitle </h4>
+
+
+                    <p>
+                        <div class="col-lg-12">
+                            <h4>Job Location: @item.JobLocation </h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Job Category: @item.JobCategory</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Employment Type: @item.EmploymentType</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Job Description: </h4>
+                        </div>
+
+                    </p>
+
+
+                    <p class="comment more col-lg-12">@item.JobDescription</p>
+
+
+
+                    <div class="panel-footer">
+                        <p class="">
+                            <a href="#">@item.Talented.Name</a> |
+                            <i class="glyphicon glyphicon-calendar">:</i>@item.DateTime |
+
+
+                            <a onclick="location.href='@Url.Action("ApplyForJob", "TalentedUser",new { id =item.Id})';">Join</a>
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+}

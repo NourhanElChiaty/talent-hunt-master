@@ -1,0 +1,130 @@
+﻿@model GraduationProject.ViewModels.PoostViewModel
+@{
+    ViewBag.Title = "Manage Posts";
+    
+}
+
+@Html.Partial("Post")
+
+
+@foreach (var item in Model.Posts)
+{
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+        <div class="tst">
+            <div class="well">
+
+                <div class="media col-md-12 col-sm-6 col-xs-6 ">
+
+                    <a href="#" class="thumbnail">
+
+
+
+
+                        @if(item.Imagepath != null)
+                        {
+                        var imageBase64 = Convert.ToBase64String(item.Imagepath);
+                        var imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                        <img data-toggle="modal" data-target="#imgview" alt="Image" src='@imageSrc'>
+
+
+                        }
+                    </a>
+
+                    <!--post view image pop up
+                    <div class="modal fade" id="imgview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg " role="document">
+                           <div class="modal-content">
+                                 <div class="modal-body">
+                                   
+                                    <button type="button" class="close imgviewclose" data-dismiss="modal" aria-hidden="true">×</button>
+
+
+                                    <img src='imageSrc' alt="" class="img-responsive" style="width: 100%;">
+
+
+
+
+
+
+                                </div>
+                            </div> 
+                        </div>
+                    </div>-->
+
+                </div>
+
+                <div class="media-body  col-md-12 col-sm-6 col-xs-6 ">
+
+
+
+                    <h4 class="media-heading col-md-12">@item.Title</h4>
+
+                    @*<div>
+                        <span class="star glyphicon glyphicon-star-empty col-lg-6"></span>
+                    </div>*@
+                        
+
+                    <div class="row">
+
+                        <p class="comment more col-md-12">
+
+
+
+                            @item.Description
+
+                        </p>
+                        
+                    </div>
+                   
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="panel-footer">
+                    <p class="">
+
+
+                        <a href="@Url.Action("DisplayProfile","TalentedUser", new {id =item.Id}) ">
+
+                            @item.User.Name
+                        </a>
+
+
+
+                        <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime
+
+
+                        <!--|<i class="glyphicon glyphicon-star">:</i>3 like button-->
+                        |
+                        <i class="glyphicon glyphicon-tags"></i>
+                        @{foreach (var postTag in Model.postTags)
+                            {
+
+
+                                if (item.Id == postTag.postid)
+                                {
+                                    <a href="#"><span class="label label-info">@postTag.Tags.Name</span></a>
+
+                                }
+                            }
+                        }
+
+
+                    </p>
+                    <div class="actions">
+                        <a href="@Url.Action("Edit","Post",new { id = item.Id })">
+                                Edit
+                            </a>|
+                        <a href="@Url.Action("Delete","Post",new { id = item.Id })">
+                            Delete
+                        </a>
+</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+                            }

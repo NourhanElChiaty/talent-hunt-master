@@ -1,0 +1,290 @@
+﻿@model GraduationProject.ViewModels.TalentedUserViewModel
+@{
+    ViewBag.Title = "LinkDisplay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container col-lg-12 home">
+
+    <!-- start profile picture -->
+
+    <div class="avatar-upload">
+
+        @using (Html.BeginForm("AvatarUpload", "TalentedUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            <div class="avatar-edit">
+                <input type="file" id="imageUpload" name="file" value="Browse" accept=".png, .jpg, .jpeg" />
+                <label for="imageUpload"></label>
+            </div>
+            <div class="avatar-preview">
+
+                @Html.Action("DispalyAvatar");
+            </div>
+
+            <input class="btn btn-default" type="submit" value="Upload" />
+
+        }
+
+
+
+
+    </div>
+
+    <!-- end profile picture -->
+    <!-- start manage post -->
+
+
+    <button type="button" class="btn btn-primary col-sm-offset-5 col-sm-2" data-toggle="modal" data-target="#myModal">
+        Manage Post
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h2 class="modal-title text-center" id="exampleModalLabel">New Post</h2>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body col-lg-12">
+                    <div class=" row col-lg-6">
+                        <div class="form-group col-lg-12">
+                            <label for="title">Title:</label>
+                            <input type="text" class="form-control " placeholder="Enter a title for the post" name="title" maxlength="50" required>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control " rows="6" placeholder="Say more about your post" name="psw" required></textarea>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <label for="my-element">Tags:</label>
+                            <input placeholder="Search & select Your Tags" type="text" id="my-element">
+                        </div>
+
+                    </div>
+
+                    <div class=" row col-lg-6 mediaesec">
+
+                        <!--
+                                 <div>
+                                 <label class="btn btn-default addbtn"> <i class="glyphicon glyphicon-picture"></i>
+                                 <input type="file" title="search image" id="file" name="file" onchange="show(this)" /></label>
+
+                                 </div>
+                        -->
+
+                        <div class="upload-post">
+                            <form id="multiple">
+                                <button type="button" class="btn btn-success fileup-btn">
+                                    Select files
+                                    <input type="file" id="upload-2" multiple="">
+                                </button>
+
+                                <a class="control-button btn btn-link" style="display: none" href="javascript:$.fileup('upload-2', 'upload', '*')">Upload all</a>
+                                <a class="control-button btn btn-link" style="display: none" href="javascript:$.fileup('upload-2', 'remove', '*')">Remove all</a>
+
+                                <div id="upload-2-queue" class="queue"></div>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                    <button type="button" class="btn btn-primary publishbtn">PUBLISH</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end manage post -->
+
+    <div class="col-lg-offset-1 col-lg-10">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#aboutme" aria-controls="aboutme" role="tab" data-toggle="tab">About me</a></li>
+            <li role="presentation"><a href="#exp" aria-controls="exp" role="tab" data-toggle="tab">Experience</a></li>
+            <li role="presentation"><a href="#project" aria-controls="project" role="tab" data-toggle="tab">Projects</a></li>
+
+
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <!-- start about me section -->
+            <div role="tabpanel" class="tab-pane active" id="aboutme">
+
+                @Html.Action("LinkAboutDisplay", "TalentedUser", new { id = Model.id })
+            </div>
+        </div>
+        <!-- end about me section -->
+        <!-- start projects section -->
+        <div role="tabpanel" class="tab-pane" id="project">
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#photo" aria-controls="home" role="tab" data-toggle="tab">Photos</a></li>
+                    <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Videos</a></li>
+                    <li role="presentation"><a href="#workshop" aria-controls="messages" role="tab" data-toggle="tab">Workshops</a></li>
+                    <li role="presentation"><a href="#event" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <!-- start photo section -->
+                    <div role="tabpanel" class="tab-pane active" id="photo">
+
+
+
+                        <div class="search__list">
+                            <table class="table table-hover">
+
+                                <tbody>
+                                    <tr class="col-sm-12">
+                                        <td class="col-sm-4"><img class="col-sm-12" src="images/bg2.jpg"></td>
+
+                                        <td class="col-sm-8">
+                                            <h4>Picture Name</h4>
+                                            <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="col-sm-12">
+                                        <td class="col-sm-4"><img class="col-sm-12" src="images/bg3.jpg"></td>
+
+                                        <td class="col-sm-8">
+                                            <h4>Picture Name</h4>
+                                            <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                        </td>
+                                    </tr>
+                                    <tr class="col-sm-12">
+                                        <td class="col-sm-4"><img class="col-sm-12" src="images/bg4.jpg"></td>
+
+                                        <td class="col-sm-8">
+                                            <h4>Picture Name</h4>
+                                            <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end photo section -->
+                    <!-- start video section -->
+                    <div role="tabpanel" class="tab-pane" id="video">
+                        <table class="table table-hover">
+                            <!-- <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Job Name</th>
+                                    <th></th>
+                                </tr>
+                            </thead> -->
+                            <tbody>
+                                <tr class="col-sm-12">
+                                    <td class="col-sm-4">
+                                        <video width="400" height="350" controls>
+                                            <source src="VID.mp4" type="video/mp4">
+                                        </video>
+                                    </td>
+
+                                    <td class="col-sm-8">
+                                        <h4>Video Name</h4>
+                                        <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                    </td>
+                                </tr>
+                                <tr class="col-sm-12">
+                                    <td class="col-sm-4">
+                                        <video width="400" height="350" controls>
+                                            <source src="VID.mp4" type="video/mp4">
+                                        </video>
+                                    </td>
+
+                                    <td class="col-sm-8">
+                                        <h4>Video Name</h4>
+                                        <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                    </td>
+                                </tr>
+                                <tr class="col-sm-12">
+                                    <td class="col-sm-4">
+                                        <video width="400" height="350" controls>
+                                            <source src="VID.mp4" type="video/mp4">
+                                        </video>
+                                    </td>
+
+                                    <td class="col-sm-8">
+                                        <h4>Video Name</h4>
+                                        <p>This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo. This is the description of the photo.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end video section -->
+                    <!-- start workshop section -->
+                    <div role="tabpanel" class="tab-pane" id="workshop">
+
+
+
+
+                        <!--start workshop view-->
+
+                        @Html.Action("LinkWorkshopDisplay", "TalentedUser", new { id = Model.id });
+                        <!--end workshop view-->
+
+
+                    </div>
+                    <!-- end workshop section -->
+                    <!-- start event section -->
+                    <div role="tabpanel" class="tab-pane" id="event">
+
+
+
+                        <!--start event view-->
+
+
+                        @Html.Action("LinkEventDisplay", new { id = Model.id });
+                    </div>
+                    <!--end event view-->
+                </div>
+            </div>
+
+            <!-- end event section -->
+        </div>
+
+
+        <div class="clearfix"></div>
+        <!-- end projects section -->
+        <!-- start exp. section -->
+        <div role="tabpanel" class="tab-pane" id="exp">
+            @Html.Action("LinkExperienceDisplay", "TalentedUser", new { id = Model.id });
+        </div>
+    </div>
+
+</div>
+<div class="clearfix"></div>
+
+    </div>
+
+
+
+
+</div>

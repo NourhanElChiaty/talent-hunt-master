@@ -1,0 +1,141 @@
+﻿@model GraduationProject.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="~/css/style.css">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div class="overlay">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/images/BG.png" alt="picture 1" style="width:100%;">
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>
+        
+<div class="head__overlay"></div>
+
+
+<div class= "col-lg-offset-3 col-lg-6 animated ">
+<div class="container text-center modal-sm ">
+    <div class="main__form signin__form sign rgstr_height" id="signup__form">
+        <img class="" height="80" width="80" src="~/images/logo1.png" alt="logo">
+        <h3>Welcome To TalentHunt</h3>
+        <p>Join Us Now</p>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post
+                                    , new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            <div class="form-group ">
+
+                @Html.TextBoxFor(m => m.Name,
+               new
+               {
+                   @class = "form-control",
+                   id = "name",
+                   placeholder = "Create your username",
+                   name = "name",
+                   maxlength = "12",
+                   minlength = "4"
+               })
+
+            </div>
+            <div class="form-group ">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", id = "registeremail", placeholder = "Enter your email", name = "email " })
+
+
+
+            </div>
+            <div class="form-group ">
+
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", id = "t1", placeholder = "Create a password", name = "pwd", maxlength = "15", minlength = "8" })
+
+            </div>
+            <div class="form-group ">
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", id = "txtConfirmPassword", onChange = "isPasswordMatch();", placeholder = "Re-type your password", name = "pwd", maxlength = "15", minlength = "8" })
+
+
+            </div>
+            <div id="divCheckPassword"></div>
+                <div class="form-group ">
+                    @Html.DropDownList("Roles", null, new { @class = "form-control" })
+                </div>
+                <div class="clearfix"></div>
+                <input type="submit" class="btn btn-default" value="Sign Up" />
+
+              
+                <p class="acc" id="two">Already have an account? <a class="" href="@Url.Action("Login","Account")" id="signin">Sign in</a></p>
+                <div class="clearfix"></div>
+        }
+
+    </div>
+</div>
+    </div>
+
+<script>
+    $(function () {
+        'use strict';
+        $('.carousel').height($(window).height());
+        $(window).resize(function () {
+            $('.carousel').height($(window).height());
+        });
+    });
+
+
+    $(document).ready(function () {
+        $("#signup").click(function () {
+            $("#signin__form").slideUp("slow", function () {
+                $("#signup__form").slideDown("slow");
+            });
+        });
+        $("#signin").click(function () {
+            $("#signup__form").slideUp("slow", function () {
+                $("#signin__form").slideDown("slow");
+            });
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+
+
+
+
+
+    function isPasswordMatch() {
+        var password = $("#t1").val();
+        var confirmPassword = $("#txtConfirmPassword").val();
+
+        if (password != confirmPassword) $("#divCheckPassword").html("*Passwords do not match!");
+        else $("#divCheckPassword").html("");
+    }
+
+    $(document).ready(function () {
+        $("#txtConfirmPassword").keyup(isPasswordMatch);
+    });
+
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,66 @@
+﻿@model GraduationProject.ViewModels.TalentAcquisitionViewModel
+@{
+    Layout = "";
+}
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+<link rel="stylesheet" href="~/Content/animate.min.css" />
+
+
+<div class="col-lg-offset-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    @foreach (var item in Model.JobApplicationPost)
+    {
+        <div class="tst">
+            <div class="well">
+
+
+
+                <div class="media-body ">
+
+                    <p class="dets">
+                        <div class="col-lg-12">
+                            <h4>Job Title: @item.JobTitle </h4>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <h4>Job Location: @item.JobLocation</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Job Category: @item.JobCategory</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <h4>Employment Type: @item.EmploymentType</h4>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h4>Job Description: </h4>
+
+                    <p class="comment more col-lg-12">@item.JobDescription</p>
+                </div>
+                <div class="col-lg-12">
+                    <h4>Requirement: </h4>
+                    <p class="comment more col-lg-12">@item.JobRequirements</p>
+                </div>
+                <div class="col-lg-12">
+                    <h4>Why Work In Our Company? </h4>
+                    <p class="comment more col-lg-12">@item.Question</p>
+                </div>
+
+
+                <div class="panel-footer">
+                    <p class="">
+                        <a href="#">@item.Talented.Name</a>
+                        | <i class="glyphicon glyphicon-calendar">:</i> @item.DateTime|
+                       
+
+
+                        <a onclick="location.href='@Url.Action("EditJob", "TalentAcquisition",new { id = item.Id})';">Edit</a> |
+                        <a onclick="location.href='@Url.Action("ApplyForJob", "TalentedUser",new { id =item.Id})';">Join</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+

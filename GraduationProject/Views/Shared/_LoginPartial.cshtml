@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Content/layout_style.css" />
+
+
+
+
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle drop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">....</a>
+            <ul class="dropdown-menu settingdrop">
+
+                @if (User.IsInRole("TalentAcquistion"))
+                {
+                    <li> @Html.ActionLink("Profile", "DisplayTA", "TalentAcquisition")</li>
+                }
+                else
+                {
+                    
+                        <li>@Html.ActionLink("Profile", "DisplayProfile", "TalentedUser") </li>
+                    
+                }
+                <li role="separator" class="divider"></li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+
+        </li>
+    </ul>
+    }
+    
+}
+
+<script src="~/Scripts/bootstrap.min.js"></script>
